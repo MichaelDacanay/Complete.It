@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.service.verifyUser(this.username, this.password));
+    this.service.verifyUser(this.username, this.password).subscribe(user => {
+      console.log(user);
+    });
   }
 }
