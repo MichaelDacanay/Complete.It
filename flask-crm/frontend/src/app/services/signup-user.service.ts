@@ -4,16 +4,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models/User';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class LoginUserService {
+export class SignupUserService {
   url = 'http://localhost:5000';
-  
+
   constructor(private http:HttpClient) { }
 
-  verifyUser(user:string, password:string):Observable<User> {
+  addUser(user:string, password:string):Observable<User> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -22,7 +21,6 @@ export class LoginUserService {
       })
     }
 
-    return this.http.get<User>(this.url + "/login", httpOptions);
-
+    return this.http.get<User>(this.url + "/signup", httpOptions);
   }
 }

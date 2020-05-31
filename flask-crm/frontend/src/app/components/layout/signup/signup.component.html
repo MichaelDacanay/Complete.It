@@ -1,0 +1,11 @@
+<div>
+    <h1>Sign up for ToDo List!</h1>
+    <p>Signup for ToDoList to access all of your ToDo tasks.</p>
+    <form class="form" (ngSubmit)="onSubmit()">
+        <label for="username">Enter Username:</label><br>
+        <input type="text" id="username" name="username" [(ngModel)]="username"><br>
+        <label for="password">Enter Password:</label><br>
+        <input type="password" id="password" name="password" [(ngModel)]="password"><br>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
