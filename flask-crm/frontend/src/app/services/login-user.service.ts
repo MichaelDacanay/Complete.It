@@ -9,7 +9,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class LoginUserService {
-  url = 'http://localhost:5000';
+  url = 'http://127.0.0.1:5000';
   
   constructor(private http:HttpClient) { }
 
@@ -21,7 +21,7 @@ export class LoginUserService {
         'password': password
       })
     }
-
+    
     return this.http.get<User>(this.url + "/login", httpOptions);
 
   }

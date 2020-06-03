@@ -8,13 +8,15 @@ import { LoginComponent } from './components/layout/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/layout/signup/signup.component';
+import { TodoComponent } from './components/layout/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    TodoComponent
   ],
   imports: [
     AppRoutingModule,
