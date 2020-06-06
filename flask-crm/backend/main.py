@@ -5,6 +5,10 @@ from pymongo import MongoClient
 import hashlib
 app = Flask(__name__)
 CORS(app)
+
+#import other file
+import todo
+
 CONN_STRING = ""
 with open("credentials.json", "r") as data:
     CONN_STRING = json.load(data)["connectionStr"]
@@ -33,28 +37,10 @@ def login_user():
     if user_exists == None or hashed_user_pw != user_exists["password"]:
         return json.dumps({"success":False}), 200, {"Content-Type": "application/json"}
 
-    user_todo_lists = user_exists["todo_ids"]
-    user_todo = {}
-    
-    for todo_list in user_todo_lists:
-        
-        user_todo_tasks = todo_db_conn.tasks.find({
-            "todo_id": user_todo_lists[todo_list]
-        })
-
-        for task in user_todo_tasks:
-            del task["_id"]
-            try:
-                user_todo[todo_list].append(task)
-            except:
-                user_todo[todo_list] = [task]
-
     success = {"success": True}
     todo_return = {
-        "success": True,
-        "user_todo": user_todo
+        "success": True
     }
-    print(todo_return)
         #user_todo[]
     return json.dumps(todo_return), 200, {"Content-Type":"application/json"}
 
@@ -81,7 +67,8 @@ def signup():
     hashed_pw  = hashlib.sha512(pswd.encode('utf-8')).hexdigest()
     user_info = {
         "username": user_data["User"],
-        "password": hashed_pw
+        "password": hashed_pw,
+        "todo_ids": {}
     }
 
     #insert user record into db

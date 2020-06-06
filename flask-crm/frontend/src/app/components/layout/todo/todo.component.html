@@ -21,11 +21,24 @@
         <tr>
             <td>{{task.task_name}}</td>
             <td>{{task.task_description}}</td>
-            <td>--Insert Checkbox--</td>
+            <td><input type="checkbox" (change)="changeChecked($event, task)"/></td>
         </tr>
     </ng-container>
+    <tr>
+        <td><input type="text" [(ngModel)]="task_name"/></td>
+        <td><input type="text" [(ngModel)]="task_description"/></td>
+    </tr>
 </table>
 <br/>
-<button>
-    Add ToDo Task
+<button (click)="addTask()">
+Add ToDo Task
 </button>
+<button (click)="onDelete()">
+    Delete
+</button>
+<div>
+    <br/>
+    <button (click)="logout()">
+        Logout
+    </button>
+</div>

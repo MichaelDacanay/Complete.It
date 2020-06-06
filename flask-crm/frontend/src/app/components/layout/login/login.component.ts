@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginUserService } from 'src/app/services/login-user.service';
+import { TodoListService } from 'src/app/services/todo-list.service';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   username:string;
   password:string;
 
-  constructor(private router: Router, private service:LoginUserService) { }
+  constructor(private router: Router, private service:LoginUserService, private todoService:TodoListService) { }
 
   ngOnInit(): void {
   }
@@ -24,8 +25,16 @@ export class LoginComponent implements OnInit {
           if (user["success"]) {
             //console.log(user)
             localStorage.setItem("user_name", this.username);
-            localStorage.setItem("user_data", JSON.stringify(user["user_todo"]));
-            this.router.navigateByUrl("/home");
+
+            //call getTasks to get the tasks for the newly logged in user
+            this.todoService.getTasks(this.username).subscribe(
+              data => {
+                //save tasks and lists for user in storage
+                localStorage.setItem("user_data", JSON.stringify(data))
+                //go to homepage
+                this.router.navigateByUrl("/home");
+              }
+            )
           }
           else {
             alert("Login failed.")
