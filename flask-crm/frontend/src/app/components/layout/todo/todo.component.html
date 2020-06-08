@@ -1,23 +1,12 @@
-<h2>Welcome to ToDoList, {{name}}</h2>
+<h3>{{todo_name}}</h3>
 
-<h3>{{first_todo}}</h3>
-
-<!--<ul>
-    <li *ngFor = "let task of first_todo_arr">
-        <strong>Name:</strong>
-        {{task.task_name}}
-        <br/>
-        <strong>Description:</strong>
-        {{task.task_description}}
-    </li>
-</ul>-->
 <table>
     <tr>
         <th>Name</th>
         <th>Description</th>
         <th>Delete</th>
     </tr>
-    <ng-container *ngFor="let task of first_todo_arr">
+    <ng-container *ngFor="let task of todo_list">
         <tr>
             <td>{{task.task_name}}</td>
             <td>{{task.task_description}}</td>
@@ -31,14 +20,8 @@
 </table>
 <br/>
 <button (click)="addTask()">
-Add ToDo Task
+Add Task
 </button>
 <button (click)="onDelete()">
     Delete
 </button>
-<div>
-    <br/>
-    <button (click)="logout()">
-        Logout
-    </button>
-</div>

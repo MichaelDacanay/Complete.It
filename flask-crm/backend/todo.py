@@ -31,18 +31,22 @@ def get_tasks():
     user_todo_lists = user_exists["todo_ids"]
     user_todo = {}
     
+    #iterate through user todo lists
     for todo_list in user_todo_lists:
         
+        #go through tasks belonging to that todo list
         user_todo_tasks = todo_db_conn.tasks.find({
             "todo_id": user_todo_lists[todo_list]
         })
 
+        #set todolist to empty
+        user_todo[todo_list] = [] 
+
+        #iterate through each task in given todo list
         for task in user_todo_tasks:
             del task["_id"]
-            try:
-                user_todo[todo_list].append(task)
-            except:
-                user_todo[todo_list] = [task]
+            #try to add task to todo list
+            user_todo[todo_list].append(task)
     
     #print(f"Getting for {user_query}")
     #print(f"{user_todo}")

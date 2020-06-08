@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { Router, RouterModule } from '@angular/router';
@@ -10,53 +10,46 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class TodoComponent implements OnInit {
 
-  toDoItems = [];
-  name = localStorage.getItem("user_name") 
-  user_data:JSON;
-  first_todo:string;
-  first_todo_arr = [];
-
   //name of task to add
   task_name: string;
   //descr of task to add
   task_description: string;
+  //user data
+  user_data:[];
+  //name of user
+  name = localStorage.getItem("user_name");
+
+  @Input()
+  //saves todo list
+  todo_list: [];
+  @Input()
+  //saves todo name
+  todo_name: string;
 
   constructor(private service:TodoListService, private router:Router) {
 
-    this.service.getTasks(this.name).subscribe( data => {
-      //console.log(data);
-        localStorage.setItem("user_data", JSON.stringify(data));
-    })
-    //console.log(this.name);
-    //console.log(localStorage.getItem("user_data"))
-
-    this.renderTasks();
   }
 
   //render all of the updated tasks
   renderTasks() {
 
+    //get updated user data
     this.user_data = JSON.parse(localStorage.getItem("user_data"));
+    //get todo list information
+    this.todo_list = this.user_data[this.todo_name];
+    console.log(this.user_data)
+    console.log(this.todo_name)
+    console.log(this.todo_list);
 
-    this.first_todo = Object.keys(this.user_data)[0];
-    
-    this.first_todo_arr = this.user_data[this.first_todo];
     try {
       //initially, set checked to false for all elements
-      for (let i = 0; i < this.first_todo_arr.length; i++) {
-        this.first_todo_arr[i].checked = false;
+      for (let i = 0; i < this.todo_list.length; i++) {
+        this.todo_list[i].checked = false;
       }
     }
     catch {
       console.log();
     } 
-  }
-
-  //method that logs user out and returns them to login screen
-  logout() {
-    localStorage.setItem("user_data", "");
-    localStorage.setItem("user_name", "");
-    this.router.navigateByUrl("/");
   }
 
   changeChecked(event, task) {
@@ -74,7 +67,7 @@ export class TodoComponent implements OnInit {
   onDelete(): void {
     let newArray = [];
     try {
-      newArray = this.first_todo_arr.filter(function(task) {
+      newArray = this.todo_list.filter(function(task) {
         return task.checked
       });
     }
@@ -98,7 +91,12 @@ export class TodoComponent implements OnInit {
   addTask() {
 
     //get id of todo list
-    let todo_id = this.first_todo_arr[0]["todo_id"];
+    console.log(this.user_data);
+    /*
+    To be implemented: Solution for edge case where todo list is empty
+    how do we get todo_id of todo list when it has no entries??
+    */
+    let todo_id = this.todo_list[0]["todo_id"];
 
     /*
     To be implemented: Handling creation of first todo list
@@ -122,10 +120,10 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
 
-  //Add each of the tasks to the ToDoItems array
-  //inside HTML component, have a for loop that loops through 
-  //todo items and shows list of todo items (li element)
+    //call render tasks to set inital checked to false
+    //for all tasks in todo list
+    this.renderTasks();
+  }
 
 }

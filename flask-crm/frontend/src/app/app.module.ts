@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/layout/signup/signup.component';
 import { TodoComponent } from './components/layout/todo/todo.component';
+import { TodoListsComponent } from './components/todo-lists/todo-lists.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TodoComponent } from './components/layout/todo/todo.component';
     HeaderComponent,
     LoginComponent,
     SignupComponent,
-    TodoComponent
+    TodoComponent,
+    TodoListsComponent
   ],
   imports: [
     AppRoutingModule,
