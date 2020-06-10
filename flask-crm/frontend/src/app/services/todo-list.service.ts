@@ -38,7 +38,7 @@ export class TodoListService {
   }
 
   //method to get updated tasks from flask app
-  getTasks(user_name) {
+  getTasks(user_name:string) {
     //console.log(user_name);
     
     const httpOptions = {
@@ -49,5 +49,30 @@ export class TodoListService {
     }
     //console.log(httpOptions);
     return this.http.get(this.url + "/getTasks", httpOptions);
+  }
+
+  //method to add new todolist with given name
+  addTodoList(todo_name:string, user_name:string) {
+      //save todolist name
+      const httpOptions = {
+        'todo_name': todo_name,
+        "username": user_name
+      };
+
+      //call post method to flask to add item to todo list
+      return this.http.post(this.url + "/addTodoList", httpOptions);
+  }
+
+  //method to delete todolist with given id
+  deleteTodoList(todo_id, todo_name, user_name:string) {
+      //save todolist name
+      const httpOptions = {
+        'todo_id': todo_id,
+        'todo_name': todo_name,
+        "username": user_name
+      };
+
+      //call post method to flask to add item to todo list
+      return this.http.post(this.url + "/deleteTodoList", httpOptions);
   }
 }

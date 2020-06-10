@@ -8,6 +8,7 @@ CORS(app)
 
 #import other file
 import todo
+import todo_lists
 
 CONN_STRING = ""
 with open("credentials.json", "r") as data:

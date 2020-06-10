@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { Router, RouterModule } from '@angular/router';
+import { TodoListsComponent } from 'src/app/components/todo-lists/todo-lists.component';
 
 @Component({
   selector: 'app-todo',
@@ -26,7 +27,7 @@ export class TodoComponent implements OnInit {
   //saves todo name
   todo_name: string;
 
-  constructor(private service:TodoListService, private router:Router) {
+  constructor(private service:TodoListService, private router:Router, private parent:TodoListsComponent) {
 
   }
 
@@ -37,10 +38,7 @@ export class TodoComponent implements OnInit {
     this.user_data = JSON.parse(localStorage.getItem("user_data"));
     //get todo list information
     this.todo_list = this.user_data[this.todo_name];
-    console.log(this.user_data)
-    console.log(this.todo_name)
-    console.log(this.todo_list);
-
+    
     try {
       //initially, set checked to false for all elements
       for (let i = 0; i < this.todo_list.length; i++) {
@@ -67,7 +65,7 @@ export class TodoComponent implements OnInit {
   onDelete(): void {
     let newArray = [];
     try {
-      newArray = this.todo_list.filter(function(task) {
+      newArray = this.todo_list.filter(function(task:JSON) {
         return task.checked
       });
     }
@@ -91,19 +89,17 @@ export class TodoComponent implements OnInit {
   addTask() {
 
     //get id of todo list
-    console.log(this.user_data);
+    //console.log(this.user_data);
     /*
-    To be implemented: Solution for edge case where todo list is empty
-    how do we get todo_id of todo list when it has no entries??
+    implemented: Solution for edge case where todo list is empty
+    how do we get todo_id of todo list when it has no entries
+      - use flask to return one element that only contains a todo id
+      - dont render that element
     */
     let todo_id = this.todo_list[0]["todo_id"];
-
-    /*
-    To be implemented: Handling creation of first todo list
-    New tasks in empty todo list.
-    */
    
     //call addtask method to add task
+    
     this.service.addTask(this.task_name, this.task_description, todo_id).subscribe( ()=>{
       
       //save new task to localstorage
@@ -117,6 +113,15 @@ export class TodoComponent implements OnInit {
     )
       }
     )
+  }
+
+  //Method to delete a single todo list
+  deleteTodoList() {
+    //save id for this todo list
+    let todo_id = this.todo_list[0]["todo_id"];
+
+    //call parent method to delete todo list
+    this.parent.deleteTodoList(todo_id, this.todo_name, this.name);
   }
 
   ngOnInit(): void {

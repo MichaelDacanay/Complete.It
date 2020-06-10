@@ -47,6 +47,14 @@ def get_tasks():
             del task["_id"]
             #try to add task to todo list
             user_todo[todo_list].append(task)
+        
+        #if there are no tasks for that todo list
+        if len(user_todo[todo_list]) == 0:
+            #set the todo id of the first element in the list to the id of
+            #the todo list
+            user_todo[todo_list].append(
+                    {"todo_id": user_todo_lists[todo_list]}
+                )
     
     #print(f"Getting for {user_query}")
     #print(f"{user_todo}")
