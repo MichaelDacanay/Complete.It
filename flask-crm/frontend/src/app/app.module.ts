@@ -10,7 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/layout/signup/signup.component';
 import { TodoComponent } from './components/layout/todo/todo.component';
 import { TodoListsComponent } from './components/todo-lists/todo-lists.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { TodoListsComponent } from './components/todo-lists/todo-lists.component
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
