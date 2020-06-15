@@ -7,7 +7,7 @@ import { TodoComponent } from './components/layout/todo/todo.component';
 import { TodoListsComponent } from './components/todo-lists/todo-lists.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: HeaderComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: TodoListsComponent }
 ];

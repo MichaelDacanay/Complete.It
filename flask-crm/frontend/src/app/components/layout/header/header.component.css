@@ -2,8 +2,12 @@
 h1 {
   font-family: Verdana;
   font-size: 72;
+  color: white;
+  text-align: center;
 }
 
 p {
   font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-align: center;
 }

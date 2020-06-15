@@ -1,30 +1,31 @@
-<br/><br/>
-<h3>{{todo_name}}
-    <button (click)="deleteTodoList()">Delete {{todo_name}}</button>
-</h3>
+<div id="one_list" class="one_list">
+    <h3>{{todo_name}}
+        <button class="btn btn-danger" (click)="deleteTodoList()">Delete {{todo_name}}</button>
+    </h3>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Delete</th>
-    </tr>
-    <ng-container *ngFor="let task of todo_list">
-        <tr *ngIf="task.task_name">
-            <td>{{task.task_name}}</td>
-            <td>{{task.task_description}}</td>
-            <td><input type="checkbox" (change)="changeChecked($event, task)"/></td>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Delete</th>
         </tr>
-    </ng-container>
-    <tr>
-        <td><input type="text" [(ngModel)]="task_name"/></td>
-        <td><input type="text" [(ngModel)]="task_description"/></td>
-    </tr>
-</table>
-<br/>
-<button (click)="addTask()">
-Add Task
-</button>
-<button (click)="onDelete()">
-    Delete Task
-</button>
+        <ng-container *ngFor="let task of todo_list">
+            <tr *ngIf="task.task_name">
+                <td>{{task.task_name}}</td>
+                <td>{{task.task_description}}</td>
+                <td><input type="checkbox" (change)="changeChecked($event, task)"/></td>
+            </tr>
+        </ng-container>
+        <tr>
+            <td><input type="text" [(ngModel)]="task_name"/></td>
+            <td><input type="text" [(ngModel)]="task_description"/></td>
+        </tr>
+    </table>
+    <br/>
+    <button class="btn btn-primary btn-sm" (click)="addTask()">
+    Add Task
+    </button>
+    <button class="btn btn-danger btn-sm" (click)="onDelete()">
+        Delete Task
+    </button>
+</div>
