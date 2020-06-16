@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     try {
       
       this.service.verifyUser(this.username, this.password).subscribe(user => {
-        alert('test');
+        //alert('test');
         console.log(user["success"]);
         if (user["success"]) {
           //console.log(user)
