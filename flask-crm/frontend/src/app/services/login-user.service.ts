@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models/User';
 
-
 @Injectable({
   providedIn: 'root'
 })

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TodoListService } from 'src/app/services/todo-list.service';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { TodoListsComponent } from 'src/app/components/todo-lists/todo-lists.component';
 
 @Component({
@@ -15,7 +14,7 @@ export class TodoComponent implements OnInit {
   //descr of task to add
   task_description: string;
   //user data
-  user_data:[];
+  user_data: any[];
   //name of user
   name = localStorage.getItem("user_name");
 
