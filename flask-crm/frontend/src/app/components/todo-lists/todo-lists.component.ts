@@ -15,8 +15,8 @@ export class TodoListsComponent implements OnInit {
   //name of current user
   name = localStorage.getItem("user_name") 
   //list of todo lists
-  todo_lists:JSON;
-  user_data:JSON;
+  todo_lists: any[];
+  user_data: any[];
 
   constructor(private service: TodoListService, private router:Router) {
   }
@@ -34,9 +34,9 @@ export class TodoListsComponent implements OnInit {
     //save as todo lists
     this.todo_lists = this.user_data;
   }
-   
+
   //method that logs user out and returns them to login screen
-  logout() {
+  logout(): void {
     localStorage.setItem("user_data", "");
     localStorage.setItem("user_name", "");
     this.router.navigateByUrl("/");
@@ -44,8 +44,6 @@ export class TodoListsComponent implements OnInit {
 
   //method that adds a new todo list for the given user
   addTodoList() {
-    
-    //console.log(this.todoListName);
 
     //add todo list with correct name and save updated data for the user.
     this.service.addTodoList(this.todoListName, this.name).subscribe( () => {
@@ -59,24 +57,21 @@ export class TodoListsComponent implements OnInit {
   }
 
   //Method to delete a single todo list
-  deleteTodoList(todo_id, todo_name, user_name) {
+  deleteTodoList(todo_id:number, todo_name:string, user_name:string) {
 
     //receive variables from child method
-    this.service.deleteTodoList(todo_id, todo_name, user_name).subscribe(
-      ()=> {
-        //save new info to localstorage
-        this.service.getTasks(this.name).subscribe( data => {
-          localStorage.setItem("user_data", JSON.stringify(data));
-        
-          //re-render todo lists
-          this.renderTodoLists();
-        })
-      }
-    )
+    this.service.deleteTodoList(todo_id, todo_name, user_name).subscribe( ()=> {
+      //save new info to localstorage
+      this.service.getTasks(this.name).subscribe( data => {
+        localStorage.setItem("user_data", JSON.stringify(data));
+      
+        //re-render todo lists
+        this.renderTodoLists();
+      })
+    })
   }
 
   ngOnInit(): void {
-
     this.renderTodoLists();
   }
 

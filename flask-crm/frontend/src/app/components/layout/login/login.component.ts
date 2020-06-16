@@ -18,10 +18,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit():void {
-    alert("test");
+  onSubmit(): void {
     try {
+      
       this.service.verifyUser(this.username, this.password).subscribe(user => {
+        alert('test');
         console.log(user["success"]);
         if (user["success"]) {
           //console.log(user)
@@ -34,10 +35,10 @@ export class LoginComponent implements OnInit {
               //go to homepage
               this.router.navigateByUrl("/home");
           })
-        }
-        else {
+        } else {
           alert("Login failed.")
         }
+
       });
     } catch {
       alert("Login failed.")

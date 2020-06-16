@@ -21,8 +21,6 @@ export class LoginUserService {
         'password': password
       })
     }
-    
-    return this.http.get<User>(this.url + "/login", httpOptions);
-
+    return this.http.get<any>(this.url + "/login", httpOptions);
   }
 }
