@@ -75,4 +75,5 @@ export class TodoListService {
       //call post method to flask to add item to todo list
       return this.http.post(this.url + "/deleteTodoList", httpOptions);
   }
+
 }

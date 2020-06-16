@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { Router } from '@angular/router';
+import { interval } from 'rxjs';
+import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-todo-lists',
@@ -27,11 +29,20 @@ export class TodoListsComponent implements OnInit {
       localStorage.setItem("user_data", JSON.stringify(data));
     })
 
-    //Save user data
-    this.user_data = JSON.parse(localStorage.getItem("user_data"));
+    this.constantlyRender();
+  }
 
-    //save as todo lists
-    this.todo_lists = this.user_data;
+  //method that listens for changes to local storage
+  constantlyRender() {
+    //Save user data
+    //make sure there is a change in localstorage
+    if (JSON.stringify(this.user_data) !== localStorage.getItem("user_data")) {
+      
+      this.user_data = JSON.parse(localStorage.getItem("user_data"));
+
+      //save as todo lists
+      this.todo_lists = this.user_data;
+    }
   }
 
   //method that logs user out and returns them to login screen
@@ -39,19 +50,6 @@ export class TodoListsComponent implements OnInit {
     localStorage.setItem("user_data", "");
     localStorage.setItem("user_name", "");
     this.router.navigateByUrl("/");
-  }
-
-  //method that adds a new todo list for the given user
-  addTodoList() {
-
-    //add todo list with correct name and save updated data for the user.
-    this.service.addTodoList(this.todoListName, this.name).subscribe( () => {
-      this.service.getTasks(this.name).subscribe( data=> {
-        localStorage.setItem("user_data", JSON.stringify(data));
-        //re-render todolist
-        this.renderTodoLists();
-      })
-    })
   }
 
   //Method to delete a single todo list
@@ -64,13 +62,18 @@ export class TodoListsComponent implements OnInit {
         localStorage.setItem("user_data", JSON.stringify(data));
       
         //re-render todo lists
-        this.renderTodoLists();
       })
     })
   }
 
   ngOnInit(): void {
+
+    //constantly re-render todo lists
     this.renderTodoLists();
+    console.log("calling")
+    interval(100).subscribe(() => {
+      this.constantlyRender();
+    })
   }
 
 }

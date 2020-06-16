@@ -16,7 +16,7 @@
         </li>
       </ul>
       <form *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="addTodoList()">
-        <input class="form-control mr-sm-2" type="search" placeholder="Todo List Name" aria-label="Search">
+        <input name="todoListName" [(ngModel)]="todoListName" class="form-control mr-sm-2" type="search" placeholder="Todo List Name" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New ToDo List</button>
       </form>
     </div>
