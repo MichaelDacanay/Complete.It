@@ -18,27 +18,26 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit():void {
+    alert("test");
     try {
       this.service.verifyUser(this.username, this.password).subscribe(user => {
-      //console.log(user["successs"])
-          if (user["success"]) {
-            //console.log(user)
-            localStorage.setItem("user_name", this.username);
+        console.log(user["success"]);
+        if (user["success"]) {
+          //console.log(user)
+          localStorage.setItem("user_name", this.username);
 
-            //call getTasks to get the tasks for the newly logged in user
-            this.todoService.getTasks(this.username).subscribe(
-              data => {
-                //save tasks and lists for user in storage
-                localStorage.setItem("user_data", JSON.stringify(data))
-                //go to homepage
-                this.router.navigateByUrl("/home");
-              }
-            )
-          }
-          else {
-            alert("Login failed.")
-          }
+          //call getTasks to get the tasks for the newly logged in user
+          this.todoService.getTasks(this.username).subscribe(data => {
+              //save tasks and lists for user in storage
+              localStorage.setItem("user_data", JSON.stringify(data))
+              //go to homepage
+              this.router.navigateByUrl("/home");
+          })
+        }
+        else {
+          alert("Login failed.")
+        }
       });
     } catch {
       alert("Login failed.")

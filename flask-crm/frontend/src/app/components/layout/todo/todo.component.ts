@@ -10,7 +10,6 @@ import { TodoListsComponent } from 'src/app/components/todo-lists/todo-lists.com
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-
   //name of task to add
   task_name: string;
   //descr of task to add
@@ -22,14 +21,12 @@ export class TodoComponent implements OnInit {
 
   @Input()
   //saves todo list
-  todo_list: [];
+  todo_list: any[];
   @Input()
   //saves todo name
   todo_name: string;
 
-  constructor(private service:TodoListService, private router:Router, private parent:TodoListsComponent) {
-
-  }
+  constructor(private service:TodoListService, private router:Router, private parent:TodoListsComponent) { }
 
   //render all of the updated tasks
   renderTasks() {
@@ -50,7 +47,7 @@ export class TodoComponent implements OnInit {
     } 
   }
 
-  changeChecked(event, task) {
+  changeChecked(event:any, task:any) {
     //Check if checkbox is checked
     if (event.target.checked) {
       task.checked = true;
@@ -65,7 +62,7 @@ export class TodoComponent implements OnInit {
   onDelete(): void {
     let newArray = [];
     try {
-      newArray = this.todo_list.filter(function(task:JSON) {
+      newArray = this.todo_list.filter(function(task:any) {
         return task.checked
       });
     }
@@ -85,11 +82,11 @@ export class TodoComponent implements OnInit {
 
   }
 
-  //add task to todolist
-  addTask() {
+  // Add task to todolist
+  addTask(): void {
 
     //get id of todo list
-    //console.log(this.user_data);
+    console.log(this.todo_list);
     /*
     implemented: Solution for edge case where todo list is empty
     how do we get todo_id of todo list when it has no entries
@@ -100,7 +97,7 @@ export class TodoComponent implements OnInit {
    
     //call addtask method to add task
     
-    this.service.addTask(this.task_name, this.task_description, todo_id).subscribe( ()=>{
+    this.service.addTask(this.task_name, this.task_description, todo_id).subscribe( () => {
       
       //save new task to localstorage
       this.service.getTasks(this.name).subscribe( data => {
@@ -109,10 +106,9 @@ export class TodoComponent implements OnInit {
         this.renderTasks();
         this.task_name = "";
         this.task_description = "";
-      }
-    )
-      }
-    )
+      })
+
+    })
   }
 
   //Method to delete a single todo list
@@ -125,9 +121,7 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    //call render tasks to set inital checked to false
-    //for all tasks in todo list
+    //call render tasks to set inital checked to false for all tasks in todo list
     this.renderTasks();
   }
 
