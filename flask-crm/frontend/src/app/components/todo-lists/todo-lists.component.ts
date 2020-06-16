@@ -18,8 +18,7 @@ export class TodoListsComponent implements OnInit {
   todo_lists: any[];
   user_data: any[];
 
-  constructor(private service: TodoListService, private router:Router) {
-  }
+  constructor(private service: TodoListService, private router:Router) { }
 
   //method that updates all the information
   renderTodoLists() {
@@ -53,7 +52,6 @@ export class TodoListsComponent implements OnInit {
         this.renderTodoLists();
       })
     })
-
   }
 
   //Method to delete a single todo list

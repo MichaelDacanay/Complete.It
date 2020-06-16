@@ -5,3 +5,8 @@ h2, label{
 #logoutDiv {
     text-align: center;
 }
+
+#todoList {
+    display: flex;
+    flex-flow: wrap;
+}
