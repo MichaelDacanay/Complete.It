@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Todo List</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,9 +15,9 @@
           <a class="nav-link" (click)="logout()"><strong>Logout</strong></a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="addTodoList()">
+        <input class="form-control mr-sm-2" type="search" placeholder="Todo List Name" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New ToDo List</button>
       </form>
     </div>
   </nav>
