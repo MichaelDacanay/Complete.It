@@ -2,6 +2,7 @@
 from flask import Flask, request
 import json
 from pymongo import MongoClient
+import ssl
 
 #import flask app
 from __main__ import app
@@ -11,7 +12,7 @@ with open("credentials.json", "r") as data:
     CONN_STRING = json.load(data)["connectionStr"]
 
 #connect to db
-todo_db_conn = MongoClient(CONN_STRING)["ToDo"]
+todo_db_conn = MongoClient(CONN_STRING, ssl_cert_reqs=ssl.CERT_NONE)["ToDo"]
 
 @app.route("/getTasks")
 def get_tasks():

@@ -27,9 +27,10 @@ export class LoginComponent implements OnInit {
         if (user["success"]) {
           //console.log(user)
           localStorage.setItem("user_name", this.username);
-
+          console.log(this.username)
           //call getTasks to get the tasks for the newly logged in user
           this.todoService.getTasks(this.username).subscribe(data => {
+              console.log('test');
               //save tasks and lists for user in storage
               localStorage.setItem("user_data", JSON.stringify(data))
               //go to homepage

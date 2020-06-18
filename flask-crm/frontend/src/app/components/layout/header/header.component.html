@@ -1,7 +1,14 @@
 <div>
-  <br>
-  <h1>Todo List</h1>
-  <p>A simple, easy-to-use platform for all your todo items</p>
+  <!-- Check if user is logged in from previous session, if so, render todo lists -->
+  <div *ngIf="isLoggedIn(); else login_c">
+    <app-todo-lists></app-todo-lists>
+  </div>
+  <!-- If user is not logged in, render welcome page, from login_c -->
+  <ng-template #login_c>
+    <br>
+    <h1>Todo List</h1>
+    <p>A simple, easy-to-use platform for all your todo items</p>
+    <app-login></app-login> 
+  </ng-template>
   
-  <app-login></app-login> 
 </div>

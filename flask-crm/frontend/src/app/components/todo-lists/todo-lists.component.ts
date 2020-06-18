@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
-import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-todo-lists',
@@ -34,8 +33,7 @@ export class TodoListsComponent implements OnInit {
 
   //method that listens for changes to local storage
   constantlyRender() {
-    //Save user data
-    //make sure there is a change in localstorage
+    //Save user data, make sure there is a change in localstorage
     if (JSON.stringify(this.user_data) !== localStorage.getItem("user_data")) {
       
       this.user_data = JSON.parse(localStorage.getItem("user_data"));

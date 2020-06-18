@@ -1,19 +1,21 @@
-<div id="one_list" class="one_list" cdkDrag>
-    <h3>{{todo_name}}
-        <button class="btn btn-danger" (click)="deleteTodoList()">Delete {{todo_name}}</button>
+<div id="one_list" class="one_list, card" style="width: 30rem" cdkDrag>
+    <div class="card-body">
+    <h3 class="card-title">{{ todo_name }}
+        <span id="deleteBtn">
+            <!-- <button class="btn btn-danger" (click)="deleteTodoList()"></button> -->
+            <img (click)="deleteTodoList()" id="trashcan" src="../../../../assets/images/trashcan.png">
+        </span>
     </h3>
 
-    <table class="table">
+    <table cellspacing="0" class="table">
         <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Delete</th>
         </tr>
         <ng-container *ngFor="let task of todo_list">
             <tr *ngIf="task.task_name">
-                <td>{{task.task_name}}</td>
+                <td><input type="checkbox" class="checkbox-round" (change)="changeChecked($event, task)"/> {{task.task_name}}</td>
                 <td>{{task.task_description}}</td>
-                <td><input type="checkbox" (change)="changeChecked($event, task)"/></td>
             </tr>
         </ng-container>
         <tr>
@@ -23,9 +25,12 @@
     </table>
     <br/>
     <button class="btn btn-primary btn-sm" (click)="addTask()">
-    Add Task
+        Add Task
     </button>
-    <button class="btn btn-danger btn-sm" (click)="onDelete()">
-        Delete Task
-    </button>
+    <span id="completeBtn">
+        <button class="btn btn-success btn-sm" (click)="onDelete()">
+            Mark as Complete
+        </button>
+    </span>
+    </div>
 </div>

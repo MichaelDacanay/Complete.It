@@ -1,24 +1,6 @@
 <h2>Welcome to ToDoList, {{name}}</h2>
-<!--<div id="logoutDiv">
-    <button class="btn btn-danger" (click)="logout()">
-        Logout
-    </button>
-</div>-->
 
 <ng-container id="todoList" *ngFor="let todo_list of todo_lists | keyvalue">
   <!--  pseudocode for todo list <Todo param={todo[0].todo_idx}/> -->
   <app-todo [todo_list]=todo_list.value [todo_name]= todo_list.key></app-todo>
 </ng-container>
-
-<!--
-<div>
-  <br/><br/>
-  <form class="form" (ngSubmit)="addTodoList()">
-    <label for="todoListName"><strong>Todo List Name</strong><br/></label>    
-    <input type="text" id="todoListName" name="todoListName" [(ngModel)]="todoListName"/>
-    <br/><br/>
-    <button type="submit">
-      <strong>Add New ToDo List</strong>
-    </button>
-  </form>
-</div>-->

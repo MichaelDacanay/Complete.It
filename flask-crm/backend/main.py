@@ -3,6 +3,8 @@ from flask_cors import CORS
 import json
 from pymongo import MongoClient
 import hashlib
+import ssl
+
 app = Flask(__name__)
 CORS(app)
 
@@ -25,7 +27,7 @@ def login_user():
     #print(user_data)
 
     #connect to database
-    todo_db_conn = MongoClient(CONN_STRING)['ToDo']
+    todo_db_conn = MongoClient(CONN_STRING,ssl_cert_reqs=ssl.CERT_NONE)['ToDo']
     user_query = {
         "username": user_data["User"] 
     }
