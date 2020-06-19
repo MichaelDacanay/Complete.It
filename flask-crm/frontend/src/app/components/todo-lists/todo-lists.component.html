@@ -1,6 +1,13 @@
-<h2>Welcome to ToDoList, {{name}}</h2>
+<!--
+  <h2>Welcome to ToDoList, {{name}}</h2>
+-->
+<div id="headerDiv" class="bg-light" style="width:300px">
+  <h2 id="headerTxt">Your Workspace</h2>
+</div>
 
-<ng-container id="todoList" *ngFor="let todo_list of todo_lists | keyvalue">
-  <!--  pseudocode for todo list <Todo param={todo[0].todo_idx}/> -->
-  <app-todo [todo_list]=todo_list.value [todo_name]= todo_list.key></app-todo>
-</ng-container>
+<div id="todoHeader">
+  <ng-container id="todoList" *ngFor="let todo_list of todo_lists | keyvalue">
+    <!--  pseudocode for todo list <Todo param={todo[0].todo_idx}/> -->
+    <app-todo [todo_list]=todo_list.value [todo_name]= todo_list.key></app-todo>
+  </ng-container>
+</div>

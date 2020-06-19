@@ -11,6 +11,9 @@ td, tr, th, h3 {
     display: inline-block;
     flex-wrap: wrap;
 }
+.card {
+    display: inline-block;
+}
 
 #addTaskBtn {
     padding-bottom: 10px;

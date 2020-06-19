@@ -1,6 +1,16 @@
-h2, label{
+label{
     color: white;
     text-align: center;
+}
+#headerTxt {
+    color: black;
+    text-align: center;
+}
+#headerDiv {
+    margin: auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom: 2px solid;
 }
 #logoutDiv {
     text-align: center;
@@ -9,4 +19,7 @@ h2, label{
 #todoList {
     display: flex;
     flex-flow: wrap;
+}
+#todoHeader {
+    padding-top: 20px;
 }
