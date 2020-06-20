@@ -67,9 +67,8 @@ export class TodoListsComponent implements OnInit {
 
     //constantly re-render todo lists
     this.renderTodoLists();
-    console.log("calling")
     interval(100).subscribe(() => {
-      this.constantlyRender();
+      this.wtantlyRender();
     })
   }
 

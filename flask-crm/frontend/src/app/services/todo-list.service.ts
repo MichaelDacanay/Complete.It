@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class TodoListService {
 
-  url = 'http://127.0.0.1:5000';
+  url = 'https://completeit-backend.herokuapp.com';
 
   constructor(private http:HttpClient) { }
 

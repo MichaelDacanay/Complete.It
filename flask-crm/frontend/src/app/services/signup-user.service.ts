@@ -8,7 +8,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class SignupUserService {
-  url = 'http://localhost:5000';
+  url = 'https://completeit-backend.herokuapp.com';
 
   constructor(private http:HttpClient) { }
 
