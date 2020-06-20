@@ -79,7 +79,6 @@ export class TodoComponent implements OnInit {
     catch {
       newArray = [];
     }
-
     //call delete method with array to delete
     //save new user data
     this.service.deleteTasks(newArray).subscribe( ()=> {
