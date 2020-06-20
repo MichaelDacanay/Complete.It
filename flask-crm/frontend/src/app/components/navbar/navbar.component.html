@@ -8,16 +8,22 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
+        <!--
         <li class="nav-item">
           <a class="nav-link" href="#">Features</a>
-        </li>
-        <li *ngIf="isLoggedIn()" class="nav-item">
-          <a class="nav-link" (click)="logout()"><strong>Logout</strong></a>
-        </li>
+        </li>-->
       </ul>
       <form *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="addTodoList()">
         <input name="todoListName" [(ngModel)]="todoListName" class="form-control mr-sm-2" type="search" placeholder="Todo List Name" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New ToDo List</button>
       </form>
+      <ul *ngIf="isLoggedIn()" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          Welcome, {{name}}
+        </li>
+        <li id="logoutBtn" class="nav-item">
+          <a (click)="logout()"><strong>Logout</strong></a>
+        </li>
+      </ul>
     </div>
   </nav>
