@@ -13,7 +13,6 @@
           <a class="nav-link" href="#">Features</a>
         </li>
          -->
-        </li>-->
       </ul>
       <form *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="addTodoList()">
         <input name="todoListName" [(ngModel)]="todoListName" class="form-control mr-sm-2" type="search" placeholder="ToDo List Name" aria-label="Search">
