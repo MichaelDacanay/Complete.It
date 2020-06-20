@@ -37,7 +37,6 @@ export class TodoListsComponent implements OnInit {
     if (JSON.stringify(this.user_data) !== localStorage.getItem("user_data")) {
       
       this.user_data = JSON.parse(localStorage.getItem("user_data"));
-
       //save as todo lists
       this.todo_lists = this.user_data;
     }
