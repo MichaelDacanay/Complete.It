@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { Router } from '@angular/router';
 import { TodoListsComponent } from 'src/app/components/todo-lists/todo-lists.component';
+import { interval } from 'rxjs';
+import { MoveTodoListsService } from 'src/app/services/move-todo-lists.service';
 
 @Component({
   selector: 'app-todo',
@@ -25,7 +27,13 @@ export class TodoComponent implements OnInit {
   //saves todo name
   todo_name: string;
 
-  constructor(private service:TodoListService, private router:Router, private parent:TodoListsComponent) { }
+  //initially set to 0
+  dragPos: JSON;
+
+  //initially set todo id
+  todo_id = 0;
+
+  constructor(private move_service:MoveTodoListsService, private service:TodoListService, private router:Router, private parent:TodoListsComponent) { }
 
   //render all of the updated tasks
   renderTasks() {
@@ -43,7 +51,10 @@ export class TodoComponent implements OnInit {
     }
     catch {
       console.log();
-    } 
+    }
+    
+    //saves todo id
+    this.todo_id = this.todo_list[0]["todo_id"];
   }
 
   changeChecked(event:any, task:any) {
@@ -85,18 +96,16 @@ export class TodoComponent implements OnInit {
   addTask(): void {
 
     //get id of todo list
-    console.log(this.todo_list);
+    //console.log(this.todo_list);
     /*
     implemented: Solution for edge case where todo list is empty
     how do we get todo_id of todo list when it has no entries
       - use flask to return one element that only contains a todo id
       - dont render that element
     */
-    let todo_id = this.todo_list[0]["todo_id"];
    
     //call addtask method to add task
-    
-    this.service.addTask(this.task_name, this.task_description, todo_id).subscribe( () => {
+    this.service.addTask(this.task_name, this.task_description, this.todo_id).subscribe( () => {
       
       //save new task to localstorage
       this.service.getTasks(this.name).subscribe( data => {
@@ -112,16 +121,68 @@ export class TodoComponent implements OnInit {
 
   //Method to delete a single todo list
   deleteTodoList() {
-    //save id for this todo list
-    let todo_id = this.todo_list[0]["todo_id"];
 
     //call parent method to delete todo list
-    this.parent.deleteTodoList(todo_id, this.todo_name, this.name);
+    this.parent.deleteTodoList(this.todo_id, this.todo_name, this.name);
+  }
+
+  //constantly update position of object
+  dragEnded($event: CdkDragEnd) {
+    
+    //get accurate position of element
+    let element = $event.source.getRootElement();
+
+    let boundingClientRect = element.getBoundingClientRect();
+    //get position of element
+    //const { offsetLeft, offsetTop } = $event.source.element.nativeElement;
+    //const { x, y } = $event.distance;
+    const x_pos = boundingClientRect.x;
+    const y_pos = boundingClientRect.y;
+    //save drag position after element is dragged
+    try {
+      this.dragPos.x = x_pos;
+      this.dragPos.y = y_pos;
+    }
+    catch {
+      this.dragPos = {x: x_pos, y: y_pos};
+    }
+
+    //move the drag position in database
+    this.move_service.movePosition(this.name, this.todo_id, this.todo_name, this.dragPos).subscribe(
+      (data)=>{console.log(data)}
+    )
+
+  }
+
+  //verify that drag position is not null
+  getDragPos() {
+      
+      //get updated user data
+      const todo_id_info = JSON.parse(localStorage.getItem("user_data"))[this.todo_name][0]["todo_id"];
+
+      //call service to get position from backend
+      this.move_service.getDragPosition(this.name, todo_id_info).subscribe((data) => {
+      
+        //save drag position
+        try {
+          
+          this.dragPos.x = data.position["x"];
+          this.dragPos.y = data.position["y"];
+
+        } catch {
+          this.dragPos = {x: data.position["x"], y: data.position["y"]};
+        }
+        //render tasks after the drag pos is obtained
+        this.renderTasks();
+      })
+      
   }
 
   ngOnInit(): void {
-    //call render tasks to set inital checked to false for all tasks in todo list
-    this.renderTasks();
+    
+    //get drag position from backend when page is loaded
+    this.getDragPos();
+
   }
 
 }
