@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<<<<<<< HEAD
     <a class="navbar-brand" href="/home">ToDo List</a>
+=======
+    <a class="navbar-brand" href="#">Complete.It</a>
+>>>>>>> 4688c608b13395903e0595ba3ca4035a70e893ad
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,13 +15,18 @@
         <!--
         <li class="nav-item">
           <a class="nav-link" href="#">Features</a>
+<<<<<<< HEAD
         </li>
          -->
+=======
+        </li>-->
+>>>>>>> 4688c608b13395903e0595ba3ca4035a70e893ad
       </ul>
       <form *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="addTodoList()">
         <input name="todoListName" [(ngModel)]="todoListName" class="form-control mr-sm-2" type="search" placeholder="ToDo List Name" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New ToDo List</button>
       </form>
+<<<<<<< HEAD
 
       <ul class="navbar-nav ml-auto">
         <li class="navbar-brand"  id="welcomeMsg" *ngIf="isLoggedIn()">
@@ -25,6 +34,14 @@
         </li>
         <li *ngIf="isLoggedIn()" class="nav-item">
           <a class="nav-link" (click)="logout()"><strong>Logout</strong></a>
+=======
+      <ul *ngIf="isLoggedIn()" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          Welcome, {{name}}
+        </li>
+        <li id="logoutBtn" class="nav-item">
+          <a (click)="logout()"><strong>Logout</strong></a>
+>>>>>>> 4688c608b13395903e0595ba3ca4035a70e893ad
         </li>
       </ul>
     </div>

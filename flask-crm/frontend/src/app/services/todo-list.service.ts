@@ -24,7 +24,7 @@ export class TodoListService {
   }
 
   //method to add task to user's todo list
-  addTask(task_name:string, task_description:string, todo_id:string) {
+  addTask(task_name:string, task_description:string, todo_id:number) {
 
     //save options for task
     const httpOptions = {

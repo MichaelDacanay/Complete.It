@@ -4,6 +4,7 @@ import json
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import ssl
+from bson.json_util import dumps
 
 #import flask app
 from __main__ import app
@@ -46,11 +47,21 @@ def add_todo_list():
         }
     )
 
+    #inital x and y position
+    init_x = 0
+    init_y = 0
+
+    #initially set position to (0, 0)
+    position_dict = {
+        "id": int(new_todo_id),
+        "position": {"x": init_x, "y": init_y}
+    }
+
     #update the list of todo lists for that particular user
     todo_db_conn.users.update_one(
         user_query,
         {"$set":
-            {f"todo_ids.{todo_name}": new_todo_id}
+            {f"todo_ids.{todo_name}": position_dict}
         }
     )
 
@@ -65,7 +76,7 @@ def delete_todo_list():
     """
     todo_data = eval(request.data)
     #name of todo list
-    todo_id = todo_data["todo_id"]
+    todo_id = int(todo_data["todo_id"])
     todo_name = todo_data["todo_name"]
 
     #set user_query to fin duser
@@ -92,7 +103,7 @@ def delete_todo_list():
     todo_db_conn.users.update_one(
         user_query,
         {"$unset":
-            {f"todo_ids.{todo_name}": todo_id}
+            {f"todo_ids.{todo_name}": ""}
         }
     )
 

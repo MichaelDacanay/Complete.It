@@ -35,9 +35,12 @@ def get_tasks():
     #iterate through user todo lists
     for todo_list in user_todo_lists:
         
+        #get todo id from user item
+        user_todo_id = int(user_todo_lists[todo_list]["id"])
+
         #go through tasks belonging to that todo list
         user_todo_tasks = todo_db_conn.tasks.find({
-            "todo_id": user_todo_lists[todo_list]
+            "todo_id": user_todo_id
         })
 
         #set todolist to empty
@@ -54,11 +57,12 @@ def get_tasks():
             #set the todo id of the first element in the list to the id of
             #the todo list
             user_todo[todo_list].append(
-                    {"todo_id": user_todo_lists[todo_list]}
+                    {"todo_id": user_todo_id}
                 )
     
     #print(f"Getting for {user_query}")
     #print(f"{user_todo}")
+    print(user_todo)
     return json.dumps(user_todo), 200, {"Content-Type":"application/json"}
 
 @app.route('/deleteTasks', methods=["DELETE"])
@@ -70,7 +74,7 @@ def delete_tasks():
 
     #iterate through tasks to remove
     for task in remove_array:
-        print(task)
+        
         task = dict(task)
         del task["checked"]
 
@@ -86,6 +90,7 @@ def add_task():
     Method to add task to a user's todo list with a name and description.
     """
     task_data = eval(request.data)
+    print(task_data)
 
     try: 
         if len(task_data["task_name"])==0  or len(task_data["task_description"])==0:

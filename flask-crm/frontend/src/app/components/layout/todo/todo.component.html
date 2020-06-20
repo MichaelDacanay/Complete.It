@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
     <head>
         <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -5,6 +6,9 @@
          href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
       </head>
 <div id="one_list" class="one_list, card" style="width: 35rem" cdkDrag>
+=======
+<div id="one_list" class="one_list, card" style="width: 30rem" cdkDrag (cdkDragEnded)="dragEnded($event)" [cdkDragFreeDragPosition]="dragPos">
+>>>>>>> 4688c608b13395903e0595ba3ca4035a70e893ad
     <div class="card-body">
     <h3 class="card-title">{{ todo_name }}
         <span id="deleteBtn">
@@ -43,7 +47,7 @@
     </button>
     <span id="completeBtn">
         <button class="btn btn-success btn-sm" (click)="onDelete()">
-            Mark as Complete
+            CompleteIt
         </button>
     </span>
     </div>

@@ -43,6 +43,7 @@ td, tr, th, h3 {
 #trashcan {
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 #completeBtn {
     padding-left: 20px;
