@@ -7,7 +7,7 @@ from bson.json_util import dumps
 import ssl
 
 #import flask app
-from __main__ import app
+from main import app
 
 CONN_STRING = ""
 with open("credentials.json", "r") as data:

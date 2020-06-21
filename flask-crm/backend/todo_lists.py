@@ -7,7 +7,7 @@ import ssl
 from bson.json_util import dumps
 
 #import flask app
-from __main__ import app
+from main import app
 
 CONN_STRING = ""
 with open("credentials.json", "r") as data:
@@ -88,7 +88,7 @@ def delete_todo_list():
     global_todo_ids = list(todo_db_conn.todo_list_ids.find_one()["todo_ids"])
 
     #remove given todo id from list
-    global_todo_ids.remove(todo_id)
+    #global_todo_ids.remove(todo_id)
 
     #update global list of todo ids with new ID
     todo_db_conn.todo_list_ids.update_one({"_id":TODO_ID_TABLE},

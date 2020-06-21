@@ -7,8 +7,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class MoveTodoListsService {
 
   url = 'https://completeit-backend.herokuapp.com';
+  
+  drag_pos: any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+   }
 
   //get the drag position of a given todo list
   getDragPosition(user_name: string, todo_id: Object) {
@@ -20,8 +23,8 @@ export class MoveTodoListsService {
         'todo_id': JSON.stringify(todo_id)
       })
     }
-    
-    return this.http.get(this.url + "/getDragPosition", httpOptions);
+    this.drag_pos = this.http.get(this.url + "/getDragPosition", httpOptions)
+    return this.drag_pos;
   }
 
   //move the drag position of the given todo list
@@ -35,7 +38,6 @@ export class MoveTodoListsService {
         "newPosition": JSON.stringify(newPosition)
       })
     }
-    
     return this.http.get(this.url + "/moveDragPosition", httpOptions);
   }
 

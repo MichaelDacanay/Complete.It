@@ -28,7 +28,7 @@ export class TodoComponent implements OnInit {
   todo_name: string;
 
   //initially set to 0
-  dragPos: JSON;
+  dragPos: any;
 
   //initially set todo id
   todo_id = 0;
@@ -126,7 +126,7 @@ export class TodoComponent implements OnInit {
   }
 
   //constantly update position of object
-  dragEnded($event: CdkDragEnd) {
+  dragEnded($event: any) {
     
     //get accurate position of element
     let element = $event.source.getRootElement();

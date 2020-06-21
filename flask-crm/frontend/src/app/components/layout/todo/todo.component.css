@@ -8,8 +8,8 @@ td, tr, th, h3 {
     padding-top: 5px;
     border:5px solid black;
     border-radius: 5px;
-    display: inline-block;
-    flex-wrap: wrap;
+    /*display: inline-block;
+    //flex-wrap: wrap;*/
 }
 .card {
     display: inline-block;
