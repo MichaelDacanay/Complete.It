@@ -163,14 +163,11 @@ export class TodoComponent implements OnInit {
       this.move_service.getDragPosition(this.name, todo_id_info).subscribe((data) => {
       
         //save drag position
-        try {
-          
-          this.dragPos.x = data.position["x"];
-          this.dragPos.y = data.position["y"];
+        this.dragPos = {x: data.position["x"], y: data.position["y"]};
+        
+        //update y position to include drop
+        this.dragPos.y -= 124;
 
-        } catch {
-          this.dragPos = {x: data.position["x"], y: data.position["y"]};
-        }
         //render tasks after the drag pos is obtained
         this.renderTasks();
       })

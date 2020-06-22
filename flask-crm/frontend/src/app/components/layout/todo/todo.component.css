@@ -8,11 +8,14 @@ td, tr, th, h3 {
     padding-top: 5px;
     border:5px solid black;
     border-radius: 5px;
+    /* ensures that dragdrop works properly */
+    position: absolute !important; 
     /*display: inline-block;
     //flex-wrap: wrap;*/
 }
 .card {
     display: inline-block;
+    position: absolute !important;
 }
 
 #addTaskBtn {

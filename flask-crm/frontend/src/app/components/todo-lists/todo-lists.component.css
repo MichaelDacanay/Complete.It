@@ -22,6 +22,7 @@ label{
 }
 #todoHeader {
     padding-top: 20px;
+    position: absolute !important;
 }
 
 #yrWorkspace {
