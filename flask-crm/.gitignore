@@ -1,0 +1,6 @@
+# Ignore the credentials
+backend/credentials.json
+backend/__pycache__
+
+# Ignore node modules
+frontend/node_modules

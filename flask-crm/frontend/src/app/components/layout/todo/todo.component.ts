@@ -166,7 +166,7 @@ export class TodoComponent implements OnInit {
         this.dragPos = {x: data.position["x"], y: data.position["y"]};
         
         //update y position to include drop
-        this.dragPos.y -= 124;
+        this.dragPos.y -= 123;
 
         //render tasks after the drag pos is obtained
         this.renderTasks();
