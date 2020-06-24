@@ -16,7 +16,7 @@ An application to manage all of your daily tasks!
 <!-- ABOUT THE PROJECT -->
 ## About Complete.It
 
-[![Complete.It Screenshot][completeit-screenshot]](https://github.com/MichaelDacanay/Complete.it/tree/master/images/CompleteItImage.JPG)
+![Complete.It Screenshot](images/CompleteItImage.JPG)
 
 We built <strong>Complete.It</strong> to help you properly manage your tasks and increase productivity on a daily basis! We understand the challenges and overcomplications that can be found with many existing task managements systems, and we designed <strong>Complete.It</strong> with a minimalistic and effective interface that strategically maximizes your organizational success.
 
