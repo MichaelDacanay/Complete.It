@@ -1,6 +1,8 @@
 # Complete.It
 An application to manage all of your daily tasks!
 
+<strong>Project Website:</strong> https://www.complete-it.herokuapp.com
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
@@ -14,7 +16,7 @@ An application to manage all of your daily tasks!
 <!-- ABOUT THE PROJECT -->
 ## About Complete.It
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Complete.It Screenshot][completeit-screenshot]](https://github.com/MichaelDacanay/Complete.it/tree/master/images/CompleteItImage.JPG)
 
 We built <strong>Complete.It</strong> to help you properly manage your tasks and increase productivity on a daily basis! We understand the challenges and overcomplications that can be found with many existing task managements systems, and we designed <strong>Complete.It</strong> with a minimalistic and effective interface that strategically maximizes your organizational success.
 
@@ -25,9 +27,7 @@ Below, we describe in detail the practices and styling that we emphasized during
 * We established a NoSQL database model with <strong>MongoDB</strong> and managed multiple collections of information.
 * We deployed our application frontend and backend to a cloud platform using <strong>Heroku</strong>, and built skills in deployment configuration and DevOps.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+Through the engineering design and implementation process, we have gained an advanced knowledge of industry-leading technologies and applied them to create a minimalistic and effective utility product. We have interwoven our skillsets of front-end and back-end frameworks to produce an application that reduces the time necessary to implement and manage your personal productivity pipeline.
 
 ### Built With
 * [Angular](https://angular.io)
