@@ -1,17 +1,18 @@
 # Complete.It
 An application to manage all of your daily tasks!
 
-<strong>Project Website:</strong> https://www.complete-it.herokuapp.com
+<strong>Project Website:</strong> http://complete-it.herokuapp.com
 
 <!-- TABLE OF CONTENTS -->
+<!--
 ## Table of Contents
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
-* [Demo](#demo)
 * [Authors](#authors)
 * [License](#license)
 * [Contact](#contact)
+-->
 
 <!-- ABOUT THE PROJECT -->
 ## About Complete.It
@@ -36,15 +37,6 @@ Through the engineering design and implementation process, we have gained an adv
 * [Heroku](https://www.heroku.com)
 * [Bootstrap](https://getbootstrap.com)
 * [HTML](https://html.com)
-
-
-<!-- DEMO EXAMPLES -->
-## Demo
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 
 <!-- CONTRIBUTING -->
 ## Authors
