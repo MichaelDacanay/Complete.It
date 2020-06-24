@@ -3,17 +3,6 @@ An application to manage all of your daily tasks!
 
 <strong>Project Website:</strong> http://complete-it.herokuapp.com
 
-<!-- TABLE OF CONTENTS -->
-<!--
-## Table of Contents
-
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Authors](#authors)
-* [License](#license)
-* [Contact](#contact)
--->
-
 <!-- ABOUT THE PROJECT -->
 ## About Complete.It
 
@@ -49,10 +38,3 @@ Through the engineering design and implementation process, we have gained an adv
 ## License
 
 Distributed under the MIT License. See ```LICENSE.md``` for more information.
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/MichaelDacanay/Complete.it](https://github.com/MichaelDacanay/Complete.it)
