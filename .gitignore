@@ -1,6 +1,7 @@
 # Ignore the credentials
 flask-crm/backend/credentials.json
 flask-crm/backend/__pycache__
+flask-crm/backend/completeit-backend
 
 # Ignore node modules
 flask-crm/frontend/node_modules
