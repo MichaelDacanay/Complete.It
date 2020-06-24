@@ -4,7 +4,7 @@ An application to manage all of your daily tasks!
 <strong>Project Website:</strong> http://complete-it.herokuapp.com
 
 <!-- ABOUT THE PROJECT -->
-## About Complete.It
+## About
 
 ![Complete.It Screenshot](images/CompleteItImage.JPG)
 
