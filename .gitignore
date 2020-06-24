@@ -4,3 +4,6 @@ flask-crm/backend/__pycache__
 
 # Ignore node modules
 flask-crm/frontend/node_modules
+
+# Ignore .vscode
+flask-crm/.vscode

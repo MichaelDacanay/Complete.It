@@ -8,21 +8,28 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  username:string;
-  password:string;
+  // user credentials
+  username: string;
+  password: string;
 
+  // inject dependency services
   constructor(private service:SignupUserService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  // when user clicks sign up button
   onSubmit() {
+
+    // add inputted user credentials to the database
     this.service.addUser(this.username, this.password).subscribe(user => {
-      if (user["success"]) {   
+      // user account successfully created
+      if (user["success"]) {
         alert("Account successfully created!")
         this.router.navigateByUrl("/");
       }
       else {
+        // username is already taken
         alert("This username has already been taken.")
       }
     });

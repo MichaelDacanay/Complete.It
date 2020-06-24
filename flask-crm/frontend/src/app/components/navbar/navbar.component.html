@@ -1,30 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Complete.It</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <!--
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-         -->
-      </ul>
-      <form *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="addTodoList()">
-        <input name="todoListName" [(ngModel)]="todoListName" class="form-control mr-sm-2" type="search" placeholder="ToDo List Name" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New ToDo List</button>
-      </form>
-      <ul *ngIf="isLoggedIn()" class="navbar-nav ml-auto">
-        <li class="nav-item">
-          Welcome, {{name}}
-        </li>
-        <li id="logoutBtn" class="nav-item">
-          <a (click)="logout()"><strong>Logout</strong></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <a class="navbar-brand" href="#">Complete.It</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="addTodoList()">
+      <input name="todoListName" [(ngModel)]="todoListName" class="form-control mr-sm-2" type="search" placeholder="ToDo List Name" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add New ToDo List</button>
+    </form>
+    <ul *ngIf="isLoggedIn()" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        Welcome, {{ name }}
+      </li>
+      <li id="logoutBtn" class="nav-item">
+        <a (click)="logout()"><strong>Logout</strong></a>
+      </li>
+    </ul>
+  </div>
+</nav>

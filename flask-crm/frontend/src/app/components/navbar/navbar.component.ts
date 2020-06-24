@@ -8,10 +8,10 @@ import { TodoListService } from 'src/app/services/todo-list.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  // name of the todo list to add
+  todoListName: string;
 
-  //Name of todolist to add
-  todoListName:string;
-  //name of current user
+  // name of the current user
   name = localStorage.getItem("user_name") 
 
   constructor(private router: Router, private service: TodoListService) { }
@@ -19,14 +19,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // method that logs user out and returns them to login screen
+  // logs user out and returns them to login screen
   logout(): void {
+    // remove user credentials from storage
     localStorage.setItem("user_data", "");
     localStorage.setItem("user_name", "");
     this.router.navigateByUrl("/");
   }
 
-  //method that checks if user is logged in
+  // checks if user is logged in
   isLoggedIn(): boolean {
     if (localStorage.getItem("user_name")) {
       return true;
@@ -34,15 +35,17 @@ export class NavbarComponent implements OnInit {
     return false;
   }
 
-  //method that adds a new todo list for the given user
+  // adds a new todo list for the given user
   addTodoList() {
     
-    //add todo list with correct name and save updated data for the user.
+    // add todo list with correct name and save updated data for the user
     this.service.addTodoList(this.todoListName, this.name).subscribe( () => {
+      
+      // return the updated tasks for this todo list, for re-render
       this.service.getTasks(this.name).subscribe( data=> {
         localStorage.setItem("user_data", JSON.stringify(data));
-        //re-render todolist
       })
+      
     })
   }
 

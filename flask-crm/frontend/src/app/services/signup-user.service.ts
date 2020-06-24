@@ -8,6 +8,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class SignupUserService {
+  // backend url
   url = 'https://completeit-backend.herokuapp.com';
 
   constructor(private http:HttpClient) { }

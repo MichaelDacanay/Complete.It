@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { User } from '../models/User';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -12,8 +10,10 @@ export class LoginUserService {
   
   constructor(private http:HttpClient) { }
 
-  verifyUser(user:string, password:string):Observable<User> {
+  verifyUser(user:string, password:string):Observable<any> {
+
     const httpOptions = {
+      // user data
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'user': user,

@@ -1,10 +1,11 @@
 <div>
-  <!-- Check if user is logged in from previous session, if so, render todo lists -->
-  <div *ngIf="isLoggedIn(); else login_c">
+  <!-- check if user is logged in from previous session, if so, render todo lists, else go to login user page -->
+  <div *ngIf="isLoggedIn(); else login_user">
     <app-todo-lists></app-todo-lists>
   </div>
-  <!-- If user is not logged in, render welcome page, from login_c -->
-  <ng-template #login_c>
+
+  <!-- if user is not logged in, render welcome page -->
+  <ng-template #login_user>
     <br>
     <h1>Complete.It</h1>
     <p>A simple, easy-to-use platform for all your todo items</p>

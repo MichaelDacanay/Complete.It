@@ -12,12 +12,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //method that checks if user is logged in
+  // checks if user is logged in
   isLoggedIn(): boolean {
     if (localStorage.getItem("user_name")) {
       return true;
     }
     return false;
   }
-
 }

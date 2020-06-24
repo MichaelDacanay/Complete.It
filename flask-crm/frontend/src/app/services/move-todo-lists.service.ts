@@ -5,15 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MoveTodoListsService {
-
+  // backend url
   url = 'https://completeit-backend.herokuapp.com';
-  
+  // the current position on the screen
   drag_pos: any;
 
-  constructor(private http:HttpClient) {
-   }
+  constructor(private http:HttpClient) { }
 
-  //get the drag position of a given todo list
+  // get the drag position of a given todo list
   getDragPosition(user_name: string, todo_id: Object) {
 
     const httpOptions = {
@@ -27,7 +26,7 @@ export class MoveTodoListsService {
     return this.drag_pos;
   }
 
-  //move the drag position of the given todo list
+  // move the drag position of the given todo list
   movePosition(user_name: string, todo_id: Object, todo_name: string, newPosition: Object) {
     const httpOptions = {
       headers: new HttpHeaders({

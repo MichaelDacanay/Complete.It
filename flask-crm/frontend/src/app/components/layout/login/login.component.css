@@ -15,6 +15,7 @@ label {
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
+  /* make card transparent */
   background-color: rgba(0,0,0,0.5) !important;
 }
 
