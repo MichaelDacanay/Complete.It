@@ -27,6 +27,11 @@ Through the engineering design and implementation process, we have gained an adv
 * [Bootstrap](https://getbootstrap.com)
 * [HTML](https://html.com)
 
+## Usage
+
+Add a section for real users here
+Add table of contents above (more professional)
+
 <!-- CONTRIBUTING -->
 ## Authors
 
