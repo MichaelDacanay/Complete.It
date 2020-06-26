@@ -6,11 +6,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoginUserService {
+  // backend url
   url = 'https://completeit-backend.herokuapp.com';
   
   constructor(private http:HttpClient) { }
 
-  verifyUser(user:string, password:string):Observable<any> {
+  // check that the user provided credentials are valid
+  verifyUser(user:string, password:string): Observable<any> {
 
     const httpOptions = {
       // user data

@@ -6,74 +6,69 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TodoListService {
-
+  // backend url
   url = 'https://completeit-backend.herokuapp.com';
 
   constructor(private http:HttpClient) { }
 
-  //method to call flask app and delete tasks
-  deleteTasks(removeArray:string[]) {
-    
+  // delete tasks in the database
+  deleteTasks(removeArray:string[]): Observable<any> {
+    // content of http request
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'remove_array': JSON.stringify(removeArray)
       })
     }
-    return this.http.delete(this.url + "/deleteTasks", httpOptions);
+    return this.http.delete<any>(this.url + "/deleteTasks", httpOptions);
   }
 
-  //method to add task to user's todo list
-  addTask(task_name:string, task_description:string, todo_id:number) {
-
-    //save options for task
+  // add task to todo list
+  addTask(task_name:string, task_description:string, todo_id:number): Observable<any> {
+    // save options for task
     const httpOptions = {
         'task_name': task_name,
         'task_description': task_description,
         'todo_id': todo_id
       };
       
-    //call post method to flask to add item to todo list
-    return this.http.post(this.url + "/addTask", httpOptions);
+    // call post method to flask to add item to todo list
+    return this.http.post<any>(this.url + "/addTask", httpOptions);
   }
 
-  //method to get updated tasks from flask app
-  getTasks(user_name:string) {
-    //console.log(user_name);
-    
+  // get updated tasks from flask app
+  getTasks(user_name:string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'username': user_name
       })
     }
-    //console.log(httpOptions);
-    return this.http.get(this.url + "/getTasks", httpOptions);
+    return this.http.get<any>(this.url + "/getTasks", httpOptions);
   }
 
-  //method to add new todolist with given name
-  addTodoList(todo_name:string, user_name:string) {
-      //save todolist name
+  // add new todo list with given name
+  addTodoList(todo_name:string, user_name:string): Observable<any> {
+      // save todo list name
       const httpOptions = {
         'todo_name': todo_name,
         "username": user_name
       };
-
-      //call post method to flask to add item to todo list
-      return this.http.post(this.url + "/addTodoList", httpOptions);
+      // call post method to flask to add item to todo list
+      return this.http.post<any>(this.url + "/addTodoList", httpOptions);
   }
 
-  //method to delete todolist with given id
-  deleteTodoList(todo_id, todo_name, user_name:string) {
-      //save todolist name
+  // delete todo list with given id
+  deleteTodoList(todo_id, todo_name, user_name:string): Observable<any> {
+      // save todo list name
       const httpOptions = {
         'todo_id': todo_id,
         'todo_name': todo_name,
         "username": user_name
       };
 
-      //call post method to flask to add item to todo list
-      return this.http.post(this.url + "/deleteTodoList", httpOptions);
+      // call post method to flask to add item to todo list
+      return this.http.post<any>(this.url + "/deleteTodoList", httpOptions);
   }
 
 }

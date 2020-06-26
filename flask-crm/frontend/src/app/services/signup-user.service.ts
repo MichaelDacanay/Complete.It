@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { User } from '../models/User';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +11,9 @@ export class SignupUserService {
 
   constructor(private http:HttpClient) { }
 
-  addUser(user:string, password:string):Observable<User> {
+  // add user to the database
+  addUser(user:string, password:string): Observable<any> {
+    // format of the http request
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -21,7 +21,6 @@ export class SignupUserService {
         'password': password
       })
     }
-
-    return this.http.get<User>(this.url + "/signup", httpOptions);
+    return this.http.post<any>(this.url + "/signup", httpOptions);
   }
 }

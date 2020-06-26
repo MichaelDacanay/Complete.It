@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { Router } from '@angular/router';
 import { TodoListsComponent } from 'src/app/components/todo-lists/todo-lists.component';
-import { interval } from 'rxjs';
 import { MoveTodoListsService } from 'src/app/services/move-todo-lists.service';
 
 @Component({
@@ -11,40 +10,40 @@ import { MoveTodoListsService } from 'src/app/services/move-todo-lists.service';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-  //name of task to add
+  // name of task to add
   task_name: string;
-  //descr of task to add
+  // description of task to add
   task_description: string;
-  //user data
+  // user data
   user_data: any[];
-  //name of user
+  // name of user
   name = localStorage.getItem("user_name");
 
   @Input()
-  //saves todo list
+  // saves todo list
   todo_list: any[];
   @Input()
-  //saves todo name
+  // saves todo name
   todo_name: string;
 
-  //initially set to 0
+  // initially set to 0
   dragPos: any;
 
-  //initially set todo id
+  // initially set todo id
   todo_id = 0;
 
   constructor(private move_service:MoveTodoListsService, private service:TodoListService, private router:Router, private parent:TodoListsComponent) { }
 
-  //render all of the updated tasks
-  renderTasks() {
+  // render the updated tasks
+  renderTasks(): void {
 
-    //get updated user data
+    // get updated user data
     this.user_data = JSON.parse(localStorage.getItem("user_data"));
-    //get todo list information
+    // get todo list information
     this.todo_list = this.user_data[this.todo_name];
     
     try {
-      //initially, set checked to false for all elements
+      // initially, set checked to false for all elements
       for (let i = 0; i < this.todo_list.length; i++) {
         this.todo_list[i].checked = false;
       }
@@ -53,22 +52,24 @@ export class TodoComponent implements OnInit {
       console.log();
     }
     
-    //saves todo id
+    // save todo id
     this.todo_id = this.todo_list[0]["todo_id"];
   }
 
-  changeChecked(event:any, task:any) {
-    //Check if checkbox is checked
+  // toggle the todo checked status
+  changeChecked(event:any, task:any): void {
+    
+    // check if checkbox is checked
     if (event.target.checked) {
       task.checked = true;
     }
-    //set to false if checkbox is not checked.
     else {
+      // set to false if checkbox is not checked
       task.checked = false;
     }
   }
 
-  //when delete button is pressed
+  // when delete button is pressed
   onDelete(): void {
     let newArray = [];
     try {
@@ -79,38 +80,29 @@ export class TodoComponent implements OnInit {
     catch {
       newArray = [];
     }
-    //call delete method with array to delete
-    //save new user data
-    this.service.deleteTasks(newArray).subscribe( ()=> {
-        this.service.getTasks(this.name).subscribe( data => {
+
+    // delete array to delete
+    this.service.deleteTasks(newArray).subscribe(() => {
+        // save new user data
+        this.service.getTasks(this.name).subscribe(data => {
             localStorage.setItem("user_data", JSON.stringify(data));
             this.renderTasks();
           }
         )
     })
-
   }
 
-  // Add task to todolist
-  addTask(): void {
-
-    //get id of todo list
-    //console.log(this.todo_list);
-    /*
-    implemented: Solution for edge case where todo list is empty
-    how do we get todo_id of todo list when it has no entries
-      - use flask to return one element that only contains a todo id
-      - dont render that element
-    */
-   
-    //call addtask method to add task
-    this.service.addTask(this.task_name, this.task_description, this.todo_id).subscribe( () => {
+  // Add new task to the todo list
+  addTask(): void {   
+    // add task to the database
+    this.service.addTask(this.task_name, this.task_description, this.todo_id).subscribe(() => {
       
-      //save new task to localstorage
-      this.service.getTasks(this.name).subscribe( data => {
+      // save updated tasks to storage
+      this.service.getTasks(this.name).subscribe(data => {
         localStorage.setItem("user_data", JSON.stringify(data));
-        //re render list of tasks
+        // re-render list of tasks
         this.renderTasks();
+        // clear the input boxes for task name and description
         this.task_name = "";
         this.task_description = "";
       })
@@ -118,26 +110,25 @@ export class TodoComponent implements OnInit {
     })
   }
 
-  //Method to delete a single todo list
-  deleteTodoList() {
-
-    //call parent method to delete todo list
+  // delete a single todo list
+  deleteTodoList(): void {
+    // call parent method in TodoListsComponent to delete todo list
     this.parent.deleteTodoList(this.todo_id, this.todo_name, this.name);
   }
 
-  //constantly update position of object
+  // constantly update position of object when drag ends
   dragEnded($event: any) {
-    
-    //get accurate position of element
+    // get position of element
     let element = $event.source.getRootElement();
 
+    // get size of element and position relative to the viewport
     let boundingClientRect = element.getBoundingClientRect();
-    //get position of element
-    //const { offsetLeft, offsetTop } = $event.source.element.nativeElement;
-    //const { x, y } = $event.distance;
+
+    // get x and y coordinates
     const x_pos = boundingClientRect.x;
     const y_pos = boundingClientRect.y;
-    //save drag position after element is dragged
+
+    // save position after element drag ends
     try {
       this.dragPos.x = x_pos;
       this.dragPos.y = y_pos;
@@ -146,39 +137,36 @@ export class TodoComponent implements OnInit {
       this.dragPos = {x: x_pos, y: y_pos};
     }
 
-    //move the drag position in database
+    // update the drag position in database after move
     this.move_service.movePosition(this.name, this.todo_id, this.todo_name, this.dragPos).subscribe(
-      (data)=>{console.log(data)}
+      data => {
+        console.log(data)
+      }
     )
 
   }
 
-  //verify that drag position is not null
-  getDragPos() {
-      
-      //get updated user data
+  // verify that drag position is not null
+  getDragPos(): void {
+      // get updated user data
       const todo_id_info = JSON.parse(localStorage.getItem("user_data"))[this.todo_name][0]["todo_id"];
 
-      //call service to get position from backend
-      this.move_service.getDragPosition(this.name, todo_id_info).subscribe((data) => {
-      
-        //save drag position
+      // call service to get position from backend
+      this.move_service.getDragPosition(this.name, todo_id_info).subscribe(data => {
+        // save drag position
         this.dragPos = {x: data.position["x"], y: data.position["y"]};
         
-        //update y position to include drop
+        // update y position to include displacement by navbar
         this.dragPos.y -= 123;
 
-        //render tasks after the drag pos is obtained
+        // render tasks after the drag position is obtained
         this.renderTasks();
-      })
-      
+      })  
   }
 
   ngOnInit(): void {
-    
-    //get drag position from backend when page is loaded
+    // get drag position from database when page is loaded
     this.getDragPos();
-
   }
 
 }

@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
     // remove user credentials from storage
     localStorage.setItem("user_data", "");
     localStorage.setItem("user_name", "");
+    // return to login screen
     this.router.navigateByUrl("/");
   }
 
@@ -36,16 +37,13 @@ export class NavbarComponent implements OnInit {
   }
 
   // adds a new todo list for the given user
-  addTodoList() {
-    
+  addTodoList(): void {
     // add todo list with correct name and save updated data for the user
-    this.service.addTodoList(this.todoListName, this.name).subscribe( () => {
-      
+    this.service.addTodoList(this.todoListName, this.name).subscribe( () => { 
       // return the updated tasks for this todo list, for re-render
-      this.service.getTasks(this.name).subscribe( data=> {
+      this.service.getTasks(this.name).subscribe(data => {
         localStorage.setItem("user_data", JSON.stringify(data));
       })
-      
     })
   }
 
