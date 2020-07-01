@@ -38,8 +38,11 @@ Through the engineering design and implementation process, we have gained an adv
 
 ## Usage
 
-### 1. Create an account with your username and password.
+### 1. Create an account with a distinct username and password, and log 
 ![SignUp Screenshot](images/CompleteItSignUp.JPG)
+
+### 2. Make the best use of Complete.It by creating new notes by category!
+![Notes Screenshot](images/CompleteItNote.JPG)
 
 <!-- CONTRIBUTING -->
 ## Authors
