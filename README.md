@@ -44,6 +44,10 @@ Through the engineering design and implementation process, we have gained an adv
 ### 2. Make the best use of Complete.It by creating new notes by category!
 ![Notes Screenshot](images/CompleteItNote.JPG)
 
+### 3. Now, you can manage all of your tasks and new ideas in one convenient place! 
+
+### We hope you enjoy using Complete.It :) Please reach out to us if you have any new feature ideas you would like to see!
+
 <!-- CONTRIBUTING -->
 ## Authors
 
