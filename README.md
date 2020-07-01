@@ -53,6 +53,7 @@ Through the engineering design and implementation process, we have gained an adv
 </p>
 
 3. Now, you can manage all of your tasks and new ideas in one convenient place! 
+<br>
 **We hope you enjoy using Complete.It :) Please reach out to us if you have any new feature ideas you would like to see!**
 
 <!-- CONTRIBUTING -->
