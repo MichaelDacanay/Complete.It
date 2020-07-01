@@ -49,11 +49,11 @@ Through the engineering design and implementation process, we have gained an adv
 <p align="center">
  <img src="images/CompleteItNote.JPG" width="800">
  <br>
- <em>Sign Up Screen</em>
+ <em>In your workspace, you can add new lists of items and organize all of your administrative needs</em>
 </p>
 
 3. Now, you can manage all of your tasks and new ideas in one convenient place! 
-We hope you enjoy using Complete.It :) Please reach out to us if you have any new feature ideas you would like to see!
+**We hope you enjoy using Complete.It :) Please reach out to us if you have any new feature ideas you would like to see!**
 
 <!-- CONTRIBUTING -->
 ## Authors
