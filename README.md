@@ -38,11 +38,11 @@ Through the engineering design and implementation process, we have gained an adv
 
 ## Usage
 
-### 1. Create an account with a distinct username and password, and log 
-<img src="images/CompleteItSignUp.JPG" width="500">
+### 1. Create an account with a distinct username and password, and log in to that account.
+<img src="images/CompleteItSignUp.JPG" width="800">
 
 ### 2. Make the best use of Complete.It by creating new notes by category!
-<img src="images/CompleteItNote.JPG" width="500">
+<img src="images/CompleteItNote.JPG" width="800">
 
 ### 3. Now, you can manage all of your tasks and new ideas in one convenient place! 
 ### We hope you enjoy using Complete.It :) Please reach out to us if you have any new feature ideas you would like to see!
