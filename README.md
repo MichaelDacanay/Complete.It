@@ -38,8 +38,8 @@ Through the engineering design and implementation process, we have gained an adv
 
 ## Usage
 
-Add a section for real users here
-Add table of contents above
+### 1. Create an account with your username and password.
+
 
 <!-- CONTRIBUTING -->
 ## Authors
