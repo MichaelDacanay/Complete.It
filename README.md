@@ -3,6 +3,15 @@ An application to manage all of your daily tasks!
 
 <strong>Project Website:</strong> http://complete-it.herokuapp.com
 
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About](#about)
+  * [Built With](#built-with)
+* [Usage](#usage)
+* [Authors](#authors)
+* [License](#license)
+
 <!-- ABOUT THE PROJECT -->
 ## About
 
