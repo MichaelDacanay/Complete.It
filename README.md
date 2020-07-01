@@ -39,7 +39,7 @@ Through the engineering design and implementation process, we have gained an adv
 ## Usage
 
 ### 1. Create an account with your username and password.
-
+![SignUp Screenshot](images/CompleteItSignUp.JPG)
 
 <!-- CONTRIBUTING -->
 ## Authors
