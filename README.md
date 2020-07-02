@@ -17,7 +17,7 @@ An application to manage all of your daily tasks!
 
 ![Complete.It Screenshot](images/CompleteItImage.JPG)
 
-We built <strong>Complete.It</strong> to help you properly manage your tasks and increase productivity on a daily basis! We understand the challenges and overcomplications that can be found with many existing task managements systems, and we designed <strong>Complete.It</strong> with a minimalistic and effective interface that strategically maximizes your organizational success.
+We built <strong>Complete.It</strong> to help you properly manage your tasks and increase productivity on a daily basis! We understand the challenges and overcomplications that can be found with many existing task management systems, and we designed <strong>Complete.It</strong> with a minimalistic and effective interface that strategically maximizes your organizational success.
 
 Below, we describe in detail the practices and styling that we emphasized during our design and development process. 
 <strong>Complete.It</strong> was envisioned and developed with the following frameworks and technology stack:
